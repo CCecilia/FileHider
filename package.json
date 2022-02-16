@@ -1,0 +1,31 @@
+{
+  "name": "file-hider",
+  "version": "1.0.0",
+  "description": "Program for hiding files inside of photos.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/CCecilia/FileHider.git"
+  },
+  "keywords": [
+    "file",
+    "hide"
+  ],
+  "author": "christian cecilia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CCecilia/FileHider/issues"
+  },
+  "homepage": "https://github.com/CCecilia/FileHider#readme",
+  "dependencies": {
+    "yargs": "^17.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.18",
+    "@types/yargs": "^17.0.8",
+    "typescript": "^4.5.5"
+  }
+}
