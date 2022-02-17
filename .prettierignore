@@ -1,0 +1,9 @@
+build
+node_modules
+prettierrc.json
+tsconfig.json
+package-lock.json
+package.json
+README.md
+.gitignore
+fileHider.code-workspace
