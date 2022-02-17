@@ -1,16 +1,26 @@
-import { FileType } from './constants';
+import { ErrorMessages, FileType } from './constants';
+import { existsSync, statSync } from 'fs';
+
 import { extname } from 'path';
-import { statSync } from 'fs';
+import { logMsg } from './logger';
 
 export const fileToHideCheck = (
   filePath: string,
-  showError = true
+  showError = true,
+  logger: (msg: string) => void = logMsg
 ): boolean => {
   if (extname(filePath) !== FileType.TEXT) {
     if (showError) {
-      process.stdout.write('Unsupported file type, please use .txt files only');
+      logger(ErrorMessages.UNSUPPORTED_FILE);
     }
 
+    return false;
+  }
+
+  if (!existsSync(filePath)) {
+    if (showError) {
+      logger(`${filePath} ${ErrorMessages.INVALID_PATH}`);
+    }
     return false;
   }
 
@@ -18,7 +28,7 @@ export const fileToHideCheck = (
 
   if (!fileStats.isFile()) {
     if (showError) {
-      process.stdout.write(`${filePath} is not a valid file`);
+      logger(`${filePath} ${ErrorMessages.INVALID_PATH}`);
     }
 
     return false;
@@ -27,12 +37,22 @@ export const fileToHideCheck = (
   return true;
 };
 
-export const imgHiderCheck = (filePath: string, showError = true): boolean => {
+export const imgHiderCheck = (
+  filePath: string,
+  showError = true,
+  logger: (msg: string) => void = logMsg
+): boolean => {
   if (extname(filePath) !== FileType.JPEG) {
     if (showError) {
-      process.stdout.write(
-        'Unsupported file type, please use .jpg files only for your hider img.'
-      );
+      logger(ErrorMessages.UNSUPPORTED_IMG);
+    }
+
+    return false;
+  }
+
+  if (!existsSync(filePath)) {
+    if (showError) {
+      logger(`${filePath} ${ErrorMessages.INVALID_PATH}`);
     }
 
     return false;
@@ -42,7 +62,7 @@ export const imgHiderCheck = (filePath: string, showError = true): boolean => {
 
   if (!fileStats.isFile()) {
     if (showError) {
-      process.stdout.write(`${filePath} is not a valid file`);
+      logger(`${filePath} ${ErrorMessages.INVALID_PATH}`);
     }
 
     return false;
@@ -51,11 +71,23 @@ export const imgHiderCheck = (filePath: string, showError = true): boolean => {
   return true;
 };
 
-export const outputDirCheck = (dirPath: string, showError = true): boolean => {
+export const outputDirCheck = (
+  dirPath: string,
+  showError = true,
+  logger: (msg: string) => void = logMsg
+): boolean => {
+  if (!existsSync(dirPath)) {
+    if (showError) {
+      logger(`${dirPath} ${ErrorMessages.INVALID_DIR}`);
+    }
+
+    return false;
+  }
+
   const isValid = statSync(dirPath).isDirectory();
 
   if (showError && !isValid) {
-    process.stdout.write(`${dirPath} is not a valid directory path`);
+    logger(`${dirPath} ${ErrorMessages.INVALID_DIR}`);
   }
 
   return isValid;
