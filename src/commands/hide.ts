@@ -52,6 +52,7 @@ export const handler = (argv: Arguments<Options>): void => {
         process.stderr.write(`error: ${error.message}`);
         return;
       }
+
       if (stderr) {
         process.stderr.write(`${stderr}`);
         return;
