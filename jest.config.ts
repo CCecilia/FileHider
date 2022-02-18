@@ -20,7 +20,12 @@ export default {
   collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ['src/**/*.{ts}'],
+  collectCoverageFrom: [
+    'src/**/*.{js,ts}',
+    '!**/node_modules/**',
+    '!build/**',
+    '!**/__mock__/**',
+  ],
 
   // The directory where Jest should output its coverage files
   coverageDirectory: 'coverage',
@@ -29,7 +34,7 @@ export default {
   coveragePathIgnorePatterns: ['/node_modules/', '/build/'],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: 'v8',
+  // coverageProvider: 'default',
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -91,7 +96,7 @@ export default {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  // preset: undefined,
+  preset: 'ts-jest',
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -133,7 +138,7 @@ export default {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  // testEnvironment: "jest-environment-node",
+  testEnvironment: 'node',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -166,7 +171,7 @@ export default {
   // timers: "real",
 
   // A map from regular expressions to paths to transformers
-  // transform: undefined,
+  transform: { '^.+\\.ts?$': 'ts-jest' },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
