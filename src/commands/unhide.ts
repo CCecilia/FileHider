@@ -3,7 +3,6 @@ import type { Arguments, CommandBuilder } from 'yargs';
 import { exec } from 'child_process';
 import { homedir } from 'os';
 import { join } from 'path';
-import { stdout } from 'process';
 
 type Options = {
   file: string;
