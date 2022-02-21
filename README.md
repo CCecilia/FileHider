@@ -12,7 +12,7 @@
 
 ### To unhide file
 
-`./fileHider-linux hide path/of/img.jpg optional/output/path/`
+`./fileHider-linux unhide path/of/img.jpg optional/output/path/`
 
 ### Optional Unhiding (linux, mac)
 
