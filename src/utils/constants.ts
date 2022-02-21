@@ -13,3 +13,8 @@ export enum ErrorMessages {
   UNSUPPORTED_FILE = 'Unsupported file type, please use .txt files only',
   UNSUPPORTED_IMG = 'Unsupported file type, please use .jpg files only for your hider img.',
 }
+
+export enum FileNames {
+  ZIP = 'fileToHide.zip',
+  FILE = 'hiddenFile.jpg',
+}

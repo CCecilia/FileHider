@@ -3,7 +3,7 @@ import { fileToHideCheck, imgHiderCheck, outputDirCheck } from '../utils/files';
 import { homedir, tmpdir } from 'os';
 
 import AdmZip from 'adm-zip';
-import { TEMP_DIR_NAME } from '../utils/constants';
+import { FileNames, TEMP_DIR_NAME } from '../utils/constants';
 import { exec } from 'child_process';
 import { join } from 'path';
 import { mkdtempSync } from 'fs';
@@ -39,8 +39,8 @@ export const handler = (argv: Arguments<Options>): void => {
   }
 
   const tempDir = mkdtempSync(join(tmpdir(), TEMP_DIR_NAME));
-  const fileToHideZipPath = join(tempDir, 'fileToHide.zip');
-  const hiddenFilePath = join(output, 'hiddenFile.jpg');
+  const fileToHideZipPath = join(tempDir, FileNames.ZIP);
+  const hiddenFilePath = join(output, FileNames.FILE);
 
   const zip = new AdmZip();
   zip.addLocalFile(file);
