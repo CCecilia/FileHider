@@ -1,6 +1,8 @@
 # FileHider
 
-## Installation 
+A simple CLI for hiding text files into jpegs that can be later extracted.
+
+## Installation
 
 ### download binary
 
