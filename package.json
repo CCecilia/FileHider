@@ -2,16 +2,22 @@
   "name": "file-hider",
   "version": "1.0.0",
   "description": "Program for hiding files inside of photos.",
-  "main": "index.js",
+  
+  "main": "./build/cli.js",
+  "bin": "./build/cli.js",
   "scripts": {
     "test": "jest",
     "build": "tsc --project ./tsconfig.json",
     "format": "prettier --write .",
     "lint": "eslint -c .eslintrc.js --ext .ts ./src",
-    "package": "pkg . --targets node14-macos-x64 --output hello"
+    "package": "pkg . --output ./dist/fileHider"
   },
   "pkg": {
-    "scripts": "build/**/*.js"
+    "scripts": "build/**/*.js",
+    "targets": [
+      "node14-macos-x64",
+      "node14-linux-x64"
+    ]
   },
   "repository": {
     "type": "git",
